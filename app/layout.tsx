@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
+import { DM_Sans, Sora } from 'next/font/google'
 
 import './globals.css'
 
-const _inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const _spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' })
+const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans' })
+const sora = Sora({ subsets: ['latin'], variable: '--font-sora' })
 
 export const metadata: Metadata = {
   title: 'NeuronaHub | Entrena tu mente, potencia tu marca',
@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={`${_inter.variable} ${_spaceGrotesk.variable}`}>
+    <html lang="es" className={`${dmSans.variable} ${sora.variable}`}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   )

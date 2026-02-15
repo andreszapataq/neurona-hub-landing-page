@@ -26,7 +26,7 @@ export function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="#" className="flex items-center">
           <Image
-            src="/images/logo.jpeg"
+            src="/images/logo.svg"
             alt="NeuronaHub"
             width={160}
             height={40}

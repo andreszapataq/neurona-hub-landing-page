@@ -31,7 +31,7 @@ export function Footer() {
           <div>
             <a href="#" className="flex items-center">
               <Image
-                src="/images/logo.jpeg"
+                src="/images/logo.svg"
                 alt="NeuronaHub"
                 width={160}
                 height={40}
