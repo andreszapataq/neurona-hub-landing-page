@@ -48,7 +48,7 @@ export function AboutSection() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="relative"
+            className="relative order-2 lg:order-1"
           >
             <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-1">
               <div className="rounded-xl bg-gradient-to-br from-primary/10 via-secondary to-card p-6 sm:p-12">
@@ -103,6 +103,7 @@ export function AboutSection() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
+            className="order-1 lg:order-2"
           >
             <span className="text-sm font-semibold uppercase tracking-widest text-primary">
               Nosotros
