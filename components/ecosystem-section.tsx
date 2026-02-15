@@ -1,8 +1,13 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { motion } from "framer-motion"
 import { Network, Lightbulb, Target, Layers } from "lucide-react"
+import {
+  transitions,
+  staggerContainer,
+  fadeInUp,
+  viewportOnce,
+} from "@/lib/animations"
 
 const pillars = [
   {
@@ -31,17 +36,25 @@ const pillars = [
   },
 ]
 
-export function EcosystemSection() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: "-100px" })
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: transitions.spring,
+  },
+}
 
+export function EcosystemSection() {
   return (
-    <section id="ecosystem" className="relative overflow-hidden py-32 px-6" ref={ref}>
+    <section id="ecosystem" className="relative overflow-hidden py-32 px-6">
       <div className="mx-auto max-w-7xl">
+        {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="text-center"
         >
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
@@ -56,16 +69,23 @@ export function EcosystemSection() {
           </p>
         </motion.div>
 
-        <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {pillars.map((pillar, i) => (
+        {/* Cards — staggered entrance + hover lift */}
+        <motion.div
+          className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          variants={staggerContainer(0.08, 0.1)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
+          {pillars.map((pillar) => (
             <motion.div
               key={pillar.title}
-              initial={{ opacity: 0, y: 25 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.1 * i }}
+              variants={cardVariants}
+              whileHover={{ y: -6, scale: 1.02 }}
+              transition={transitions.springBouncy}
               className="group relative overflow-hidden rounded-xl border border-border bg-card p-8 transition-colors hover:border-primary/50"
             >
-              <div className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-primary/5 transition-transform group-hover:scale-150" />
+              <div className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-primary/5 transition-transform duration-500 group-hover:scale-[2]" />
               <div className="relative">
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                   <pillar.icon className="h-6 w-6 text-primary" />
@@ -79,7 +99,7 @@ export function EcosystemSection() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

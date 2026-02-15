@@ -1,7 +1,6 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { motion } from "framer-motion"
 import {
   GraduationCap,
   Palette,
@@ -9,6 +8,12 @@ import {
   Coffee,
   ArrowUpRight,
 } from "lucide-react"
+import {
+  transitions,
+  staggerContainer,
+  fadeInUp,
+  viewportOnce,
+} from "@/lib/animations"
 
 const brands = [
   {
@@ -57,22 +62,30 @@ const brands = [
   },
 ]
 
-export function BrandsSection() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: "-100px" })
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: transitions.spring,
+  },
+}
 
+export function BrandsSection() {
   return (
-    <section id="brands" className="relative overflow-hidden py-32 px-6" ref={ref}>
+    <section id="brands" className="relative overflow-hidden py-32 px-6">
       {/* Glow */}
       <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2">
         <div className="h-[250px] w-[250px] rounded-full bg-primary/5 blur-[100px] md:h-[400px] md:w-[400px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl">
+        {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
           className="text-center"
         >
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
@@ -87,13 +100,20 @@ export function BrandsSection() {
           </p>
         </motion.div>
 
-        <div className="mt-20 grid gap-6 md:grid-cols-2">
-          {brands.map((brand, i) => (
+        {/* Brand cards — staggered + hover lift */}
+        <motion.div
+          className="mt-20 grid gap-6 md:grid-cols-2"
+          variants={staggerContainer(0.1, 0.1)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
+          {brands.map((brand) => (
             <motion.div
               key={brand.name}
-              initial={{ opacity: 0, y: 25 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.1 * i }}
+              variants={cardVariants}
+              whileHover={{ y: -4, scale: 1.015 }}
+              transition={transitions.springBouncy}
               className={`group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all duration-300 ${brand.borderColor}`}
             >
               {/* Background gradient on hover */}
@@ -106,7 +126,7 @@ export function BrandsSection() {
                   <div className={`flex h-14 w-14 items-center justify-center rounded-xl ${brand.iconBg}`}>
                     <brand.icon className={`h-7 w-7 ${brand.iconColor}`} />
                   </div>
-                  <ArrowUpRight className="h-5 w-5 text-muted-foreground opacity-0 transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100" />
+                  <ArrowUpRight className="h-5 w-5 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100" />
                 </div>
 
                 <h3 className="mt-6 font-display text-xl font-bold text-foreground">
@@ -121,7 +141,7 @@ export function BrandsSection() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

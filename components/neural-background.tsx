@@ -21,19 +21,24 @@ export function NeuralBackground() {
 
     let animationId: number
 
-    // Detectar móvil para ajustar rendimiento
+    // ── Respect prefers-reduced-motion ──
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches
+
+    // ── Detect mobile for performance tuning ──
     const isMobile = window.innerWidth < 768
 
     const nodes: Node[] = []
-    const nodeCount = isMobile ? 20 : 60
+    const nodeCount = prefersReducedMotion ? 15 : isMobile ? 20 : 60
     const connectionDistance = isMobile ? 120 : 150
     const connectionDistanceSq = connectionDistance * connectionDistance
-    const targetFps = isMobile ? 30 : 60
-    const frameInterval = 1000 / targetFps
+    const targetFps = prefersReducedMotion ? 0 : isMobile ? 30 : 60
+    const frameInterval = targetFps > 0 ? 1000 / targetFps : 0
 
     let lastFrameTime = 0
 
-    // Pausar cuando la pestaña no es visible
+    // ── Pause when tab is hidden ──
     let isVisible = true
     const handleVisibility = () => {
       isVisible = !document.hidden
@@ -63,32 +68,13 @@ export function NeuralBackground() {
       })
     }
 
-    const animate = (timestamp: number) => {
-      animationId = requestAnimationFrame(animate)
-
-      if (!isVisible) return
-
-      // Limitar FPS
-      const elapsed = timestamp - lastFrameTime
-      if (elapsed < frameInterval) return
-      lastFrameTime = timestamp - (elapsed % frameInterval)
-
+    /** Draw a single static frame (for reduced-motion users) */
+    const drawStaticFrame = () => {
       const w = window.innerWidth
       const h = window.innerHeight
-
       ctx.clearRect(0, 0, w, h)
 
-      // Actualizar posiciones
-      for (let i = 0; i < nodes.length; i++) {
-        const node = nodes[i]
-        node.x += node.vx
-        node.y += node.vy
-
-        if (node.x < 0 || node.x > w) node.vx *= -1
-        if (node.y < 0 || node.y > h) node.vy *= -1
-      }
-
-      // Dibujar conexiones — usar distancia al cuadrado para evitar sqrt
+      // Connections
       ctx.lineWidth = 1
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
@@ -97,7 +83,8 @@ export function NeuralBackground() {
           const distSq = dx * dx + dy * dy
 
           if (distSq < connectionDistanceSq) {
-            const opacity = (1 - Math.sqrt(distSq) / connectionDistance) * 0.15
+            const opacity =
+              (1 - Math.sqrt(distSq) / connectionDistance) * 0.15
             ctx.strokeStyle = `rgba(46, 155, 218, ${opacity})`
             ctx.beginPath()
             ctx.moveTo(nodes[i].x, nodes[i].y)
@@ -107,7 +94,70 @@ export function NeuralBackground() {
         }
       }
 
-      // Dibujar nodos
+      // Nodes
+      ctx.fillStyle = "rgba(46, 155, 218, 0.3)"
+      for (let i = 0; i < nodes.length; i++) {
+        ctx.beginPath()
+        ctx.arc(nodes[i].x, nodes[i].y, 2, 0, Math.PI * 2)
+        ctx.fill()
+      }
+    }
+
+    // If reduced motion, draw once and stop
+    if (prefersReducedMotion) {
+      drawStaticFrame()
+      return () => {
+        window.removeEventListener("resize", resize)
+        document.removeEventListener("visibilitychange", handleVisibility)
+      }
+    }
+
+    const animate = (timestamp: number) => {
+      animationId = requestAnimationFrame(animate)
+
+      if (!isVisible) return
+
+      // Throttle FPS
+      const elapsed = timestamp - lastFrameTime
+      if (elapsed < frameInterval) return
+      lastFrameTime = timestamp - (elapsed % frameInterval)
+
+      const w = window.innerWidth
+      const h = window.innerHeight
+
+      ctx.clearRect(0, 0, w, h)
+
+      // Update positions
+      for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i]
+        node.x += node.vx
+        node.y += node.vy
+
+        if (node.x < 0 || node.x > w) node.vx *= -1
+        if (node.y < 0 || node.y > h) node.vy *= -1
+      }
+
+      // Draw connections — squared distance avoids sqrt per pair
+      ctx.lineWidth = 1
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x
+          const dy = nodes[i].y - nodes[j].y
+          const distSq = dx * dx + dy * dy
+
+          if (distSq < connectionDistanceSq) {
+            const opacity =
+              (1 - Math.sqrt(distSq) / connectionDistance) * 0.15
+            ctx.strokeStyle = `rgba(46, 155, 218, ${opacity})`
+            ctx.beginPath()
+            ctx.moveTo(nodes[i].x, nodes[i].y)
+            ctx.lineTo(nodes[j].x, nodes[j].y)
+            ctx.stroke()
+          }
+        }
+      }
+
+      // Draw nodes
       ctx.fillStyle = "rgba(46, 155, 218, 0.3)"
       for (let i = 0; i < nodes.length; i++) {
         ctx.beginPath()

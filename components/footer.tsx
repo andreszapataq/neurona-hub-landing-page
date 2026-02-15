@@ -1,6 +1,8 @@
 "use client"
 
+import { motion } from "framer-motion"
 import Image from "next/image"
+import { staggerContainer, fadeInUp } from "@/lib/animations"
 
 const footerLinks = {
   Marcas: [
@@ -24,11 +26,24 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-card/50">
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.6 }}
+      className="border-t border-border bg-card/50"
+    >
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        {/* Main grid — staggered entrance */}
+        <motion.div
+          className="grid gap-12 md:grid-cols-2 lg:grid-cols-4"
+          variants={staggerContainer(0.08, 0.1)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+        >
           {/* Brand */}
-          <div>
+          <motion.div variants={fadeInUp}>
             <a href="#" className="flex items-center">
               <Image
                 src="/images/logo.svg"
@@ -42,11 +57,11 @@ export function Footer() {
               Entrenar la mente, fortalecer la marca personal y potenciar el crecimiento
               profesional y empresarial.
             </p>
-          </div>
+          </motion.div>
 
           {/* Links */}
           {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
+            <motion.div key={title} variants={fadeInUp}>
               <h3 className="font-display text-sm font-semibold text-foreground">
                 {title}
               </h3>
@@ -62,36 +77,34 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
+        {/* Bottom bar */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row"
+        >
           <p className="text-sm text-muted-foreground">
             {new Date().getFullYear()} NeuronaHub. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-6">
-            <a
-              href="#"
-              className="text-sm text-muted-foreground transition-colors hover:text-primary"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="#"
-              className="text-sm text-muted-foreground transition-colors hover:text-primary"
-            >
-              Instagram
-            </a>
-            <a
-              href="#"
-              className="text-sm text-muted-foreground transition-colors hover:text-primary"
-            >
-              YouTube
-            </a>
+            {["LinkedIn", "Instagram", "YouTube"].map((social) => (
+              <a
+                key={social}
+                href="#"
+                className="text-sm text-muted-foreground transition-colors hover:text-primary"
+              >
+                {social}
+              </a>
+            ))}
           </div>
-        </div>
+        </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   )
 }

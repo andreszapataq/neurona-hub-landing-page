@@ -6,10 +6,12 @@ import { BrandsSection } from "@/components/brands-section"
 import { AboutSection } from "@/components/about-section"
 import { CtaSection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
+import { ScrollProgress } from "@/components/scroll-progress"
 
 export default function Page() {
   return (
     <>
+      <ScrollProgress />
       <NeuralBackground />
       <Navbar />
       <main className="relative z-10">
