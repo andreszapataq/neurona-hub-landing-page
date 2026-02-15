@@ -36,7 +36,7 @@ export function EcosystemSection() {
   const inView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section id="ecosystem" className="relative py-32 px-6" ref={ref}>
+    <section id="ecosystem" className="relative overflow-hidden py-32 px-6" ref={ref}>
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -60,9 +60,9 @@ export function EcosystemSection() {
           {pillars.map((pillar, i) => (
             <motion.div
               key={pillar.title}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 25 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.15 * i }}
+              transition={{ duration: 0.4, delay: 0.1 * i }}
               className="group relative overflow-hidden rounded-xl border border-border bg-card p-8 transition-colors hover:border-primary/50"
             >
               <div className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-primary/5 transition-transform group-hover:scale-150" />

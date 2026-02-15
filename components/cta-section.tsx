@@ -16,11 +16,11 @@ export function CtaSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="relative overflow-hidden rounded-3xl border border-border bg-card p-12 text-center md:p-20"
+          className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 text-center sm:p-12 md:p-20"
         >
           {/* Background glow */}
           <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2">
-            <div className="h-[300px] w-[600px] rounded-full bg-primary/10 blur-[100px]" />
+            <div className="h-[200px] w-[300px] rounded-full bg-primary/10 blur-[100px] md:h-[300px] md:w-[600px]" />
           </div>
 
           <div className="relative">

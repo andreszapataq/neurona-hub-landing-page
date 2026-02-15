@@ -20,47 +20,85 @@ export function NeuralBackground() {
     if (!ctx) return
 
     let animationId: number
+
+    // Detectar móvil para ajustar rendimiento
+    const isMobile = window.innerWidth < 768
+
     const nodes: Node[] = []
-    const nodeCount = 60
-    const connectionDistance = 150
+    const nodeCount = isMobile ? 20 : 60
+    const connectionDistance = isMobile ? 120 : 150
+    const connectionDistanceSq = connectionDistance * connectionDistance
+    const targetFps = isMobile ? 30 : 60
+    const frameInterval = 1000 / targetFps
+
+    let lastFrameTime = 0
+
+    // Pausar cuando la pestaña no es visible
+    let isVisible = true
+    const handleVisibility = () => {
+      isVisible = !document.hidden
+    }
+    document.addEventListener("visibilitychange", handleVisibility)
 
     const resize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      const dpr = Math.min(window.devicePixelRatio, 2)
+      canvas.width = window.innerWidth * dpr
+      canvas.height = window.innerHeight * dpr
+      canvas.style.width = `${window.innerWidth}px`
+      canvas.style.height = `${window.innerHeight}px`
+      ctx.scale(dpr, dpr)
     }
     resize()
     window.addEventListener("resize", resize)
 
+    const logicalWidth = window.innerWidth
+    const logicalHeight = window.innerHeight
+
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
+        x: Math.random() * logicalWidth,
+        y: Math.random() * logicalHeight,
+        vx: (Math.random() - 0.5) * (isMobile ? 0.3 : 0.4),
+        vy: (Math.random() - 0.5) * (isMobile ? 0.3 : 0.4),
       })
     }
 
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+    const animate = (timestamp: number) => {
+      animationId = requestAnimationFrame(animate)
 
-      nodes.forEach((node) => {
+      if (!isVisible) return
+
+      // Limitar FPS
+      const elapsed = timestamp - lastFrameTime
+      if (elapsed < frameInterval) return
+      lastFrameTime = timestamp - (elapsed % frameInterval)
+
+      const w = window.innerWidth
+      const h = window.innerHeight
+
+      ctx.clearRect(0, 0, w, h)
+
+      // Actualizar posiciones
+      for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i]
         node.x += node.vx
         node.y += node.vy
 
-        if (node.x < 0 || node.x > canvas.width) node.vx *= -1
-        if (node.y < 0 || node.y > canvas.height) node.vy *= -1
-      })
+        if (node.x < 0 || node.x > w) node.vx *= -1
+        if (node.y < 0 || node.y > h) node.vy *= -1
+      }
 
+      // Dibujar conexiones — usar distancia al cuadrado para evitar sqrt
+      ctx.lineWidth = 1
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x
           const dy = nodes[i].y - nodes[j].y
-          const distance = Math.sqrt(dx * dx + dy * dy)
+          const distSq = dx * dx + dy * dy
 
-          if (distance < connectionDistance) {
-            const opacity = (1 - distance / connectionDistance) * 0.15
+          if (distSq < connectionDistanceSq) {
+            const opacity = (1 - Math.sqrt(distSq) / connectionDistance) * 0.15
             ctx.strokeStyle = `rgba(46, 155, 218, ${opacity})`
-            ctx.lineWidth = 1
             ctx.beginPath()
             ctx.moveTo(nodes[i].x, nodes[i].y)
             ctx.lineTo(nodes[j].x, nodes[j].y)
@@ -69,21 +107,21 @@ export function NeuralBackground() {
         }
       }
 
-      nodes.forEach((node) => {
-        ctx.fillStyle = "rgba(46, 155, 218, 0.3)"
+      // Dibujar nodos
+      ctx.fillStyle = "rgba(46, 155, 218, 0.3)"
+      for (let i = 0; i < nodes.length; i++) {
         ctx.beginPath()
-        ctx.arc(node.x, node.y, 2, 0, Math.PI * 2)
+        ctx.arc(nodes[i].x, nodes[i].y, 2, 0, Math.PI * 2)
         ctx.fill()
-      })
-
-      animationId = requestAnimationFrame(animate)
+      }
     }
 
-    animate()
+    animationId = requestAnimationFrame(animate)
 
     return () => {
       cancelAnimationFrame(animationId)
       window.removeEventListener("resize", resize)
+      document.removeEventListener("visibilitychange", handleVisibility)
     }
   }, [])
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { useState } from "react"
 import Image from "next/image"
@@ -62,30 +62,34 @@ export function Navbar() {
         </button>
       </div>
 
-      {mobileOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          className="border-t border-border/50 bg-background/95 backdrop-blur-xl md:hidden"
-        >
-          <nav className="flex flex-col gap-4 px-6 py-6" aria-label="Navegación móvil">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-              >
-                {link.label}
-              </a>
-            ))}
-            <Button size="sm" className="mt-2 w-full bg-primary text-primary-foreground hover:bg-primary/90">
-              Comienza ahora
-            </Button>
-          </nav>
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden border-t border-border/50 bg-background/95 backdrop-blur-xl md:hidden"
+          >
+            <nav className="flex flex-col gap-4 px-6 py-6" aria-label="Navegación móvil">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <Button size="sm" className="mt-2 w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                Comienza ahora
+              </Button>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   )
 }

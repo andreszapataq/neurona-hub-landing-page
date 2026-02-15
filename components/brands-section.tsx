@@ -62,10 +62,10 @@ export function BrandsSection() {
   const inView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section id="brands" className="relative py-32 px-6" ref={ref}>
+    <section id="brands" className="relative overflow-hidden py-32 px-6" ref={ref}>
       {/* Glow */}
       <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2">
-        <div className="h-[400px] w-[400px] rounded-full bg-primary/5 blur-[100px]" />
+        <div className="h-[250px] w-[250px] rounded-full bg-primary/5 blur-[100px] md:h-[400px] md:w-[400px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl">
@@ -91,9 +91,9 @@ export function BrandsSection() {
           {brands.map((brand, i) => (
             <motion.div
               key={brand.name}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 25 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.15 * i }}
+              transition={{ duration: 0.4, delay: 0.1 * i }}
               className={`group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all duration-300 ${brand.borderColor}`}
             >
               {/* Background gradient on hover */}
