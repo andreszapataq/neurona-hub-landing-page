@@ -9,6 +9,8 @@ import { Footer } from "@/components/footer"
 import { ScrollProgress } from "@/components/scroll-progress"
 
 export default function Page() {
+  const currentYear = new Date().getUTCFullYear()
+
   return (
     <>
       <ScrollProgress />
@@ -21,7 +23,7 @@ export default function Page() {
         <AboutSection />
         <CtaSection />
       </main>
-      <Footer />
+      <Footer year={currentYear} />
     </>
   )
 }

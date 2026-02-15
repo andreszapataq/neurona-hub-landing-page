@@ -24,7 +24,7 @@ const footerLinks = {
   ],
 }
 
-export function Footer() {
+export function Footer({ year }: { year: number }) {
   return (
     <motion.footer
       initial={{ opacity: 0 }}
@@ -90,7 +90,7 @@ export function Footer() {
           className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row"
         >
           <p className="text-sm text-muted-foreground">
-            {new Date().getFullYear()} NeuronaHub. Todos los derechos reservados.
+            {year} NeuronaHub. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-6">
             {["LinkedIn", "Instagram", "YouTube"].map((social) => (
