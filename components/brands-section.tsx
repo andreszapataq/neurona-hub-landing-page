@@ -76,7 +76,7 @@ export function BrandsSection() {
     <section id="brands" className="relative overflow-hidden py-32 px-6">
       {/* Glow */}
       <div className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2">
-        <div className="h-[250px] w-[250px] rounded-full bg-primary/5 blur-[100px] md:h-[400px] md:w-[400px]" />
+        <div className="h-[150px] w-[150px] rounded-full bg-primary/5 blur-[60px] md:h-[400px] md:w-[400px] md:blur-[100px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl">

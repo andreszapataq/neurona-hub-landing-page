@@ -30,10 +30,10 @@ export function NeuralBackground() {
     const isMobile = window.innerWidth < 768
 
     const nodes: Node[] = []
-    const nodeCount = prefersReducedMotion ? 15 : isMobile ? 20 : 60
-    const connectionDistance = isMobile ? 120 : 150
+    const nodeCount = prefersReducedMotion ? 10 : isMobile ? 12 : 42
+    const connectionDistance = isMobile ? 90 : 130
     const connectionDistanceSq = connectionDistance * connectionDistance
-    const targetFps = prefersReducedMotion ? 0 : isMobile ? 30 : 60
+    const targetFps = prefersReducedMotion ? 0 : isMobile ? 20 : 45
     const frameInterval = targetFps > 0 ? 1000 / targetFps : 0
 
     let lastFrameTime = 0
@@ -51,6 +51,8 @@ export function NeuralBackground() {
       canvas.height = window.innerHeight * dpr
       canvas.style.width = `${window.innerWidth}px`
       canvas.style.height = `${window.innerHeight}px`
+      // Reset transform before scaling; iOS can fire many resize events.
+      ctx.setTransform(1, 0, 0, 1, 0, 0)
       ctx.scale(dpr, dpr)
     }
     resize()

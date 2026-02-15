@@ -19,7 +19,7 @@ export function CtaSection() {
         >
           {/* Background glow */}
           <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2">
-            <div className="h-[200px] w-[300px] rounded-full bg-primary/10 blur-[100px] md:h-[300px] md:w-[600px]" />
+            <div className="h-[120px] w-[180px] rounded-full bg-primary/10 blur-[60px] md:h-[300px] md:w-[600px] md:blur-[100px]" />
           </div>
 
           <div className="relative">

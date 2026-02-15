@@ -39,7 +39,7 @@ export function HeroSection() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
       >
-        <div className="h-[300px] w-[300px] rounded-full bg-primary/10 blur-[120px] md:h-[500px] md:w-[500px]" />
+        <div className="h-[180px] w-[180px] rounded-full bg-primary/10 blur-[70px] md:h-[500px] md:w-[500px] md:blur-[120px]" />
       </motion.div>
 
       {/* Content — parent drives stagger for all children */}

@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion"
 import { Menu, X } from "lucide-react"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { transitions, staggerContainer } from "@/lib/animations"
@@ -56,10 +56,15 @@ const mobileLinkVariants = {
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const scrolledRef = useRef(false)
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 20)
+    const next = latest > 20
+    if (next !== scrolledRef.current) {
+      scrolledRef.current = next
+      setScrolled(next)
+    }
   })
 
   return (
@@ -67,7 +72,7 @@ export function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 260, damping: 30 }}
-      className={`fixed top-0 z-50 w-full border-b backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-300 ${
+      className={`fixed top-0 z-50 w-full border-b backdrop-blur-md md:backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-300 ${
         scrolled
           ? "border-border/60 bg-background/90 shadow-sm shadow-black/5"
           : "border-border/30 bg-background/60"
@@ -158,7 +163,7 @@ export function Navbar() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="overflow-hidden border-t border-border/50 bg-background/95 backdrop-blur-xl md:hidden"
+            className="overflow-hidden border-t border-border/50 bg-background/95 backdrop-blur-md md:hidden"
           >
             <nav className="flex flex-col gap-4 px-6 py-6" aria-label="Navegación móvil">
               {navLinks.map((link) => (
