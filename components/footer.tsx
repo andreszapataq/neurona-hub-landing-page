@@ -1,6 +1,6 @@
 "use client"
 
-import { Brain } from "lucide-react"
+import Image from "next/image"
 
 const footerLinks = {
   Marcas: [
@@ -29,13 +29,14 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
-            <a href="#" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                <Brain className="h-5 w-5 text-primary-foreground" />
-              </div>
-              <span className="font-display text-xl font-bold text-foreground">
-                NeuronaHub
-              </span>
+            <a href="#" className="flex items-center">
+              <Image
+                src="/images/logo.jpeg"
+                alt="NeuronaHub"
+                width={160}
+                height={40}
+                className="h-8 w-auto"
+              />
             </a>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               Entrenar la mente, fortalecer la marca personal y potenciar el crecimiento

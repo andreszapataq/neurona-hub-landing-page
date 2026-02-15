@@ -17,10 +17,10 @@ const brands = [
     tagline: "Formación de alto impacto",
     description:
       "Programas formativos intensivos para desarrollar competencias en marketing digital, ventas, liderazgo y crecimiento empresarial.",
-    color: "from-teal-500/20 to-cyan-500/20",
-    borderColor: "hover:border-teal-500/50",
-    iconBg: "bg-teal-500/10",
-    iconColor: "text-teal-400",
+    color: "from-sky-500/20 to-blue-500/20",
+    borderColor: "hover:border-sky-500/50",
+    iconBg: "bg-sky-500/10",
+    iconColor: "text-sky-400",
   },
   {
     name: "Neurona BrandLab",

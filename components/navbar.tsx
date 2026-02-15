@@ -1,8 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Brain, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { useState } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
@@ -23,13 +24,15 @@ export function Navbar() {
       className="fixed top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-xl"
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <Brain className="h-5 w-5 text-primary-foreground" />
-          </div>
-          <span className="font-display text-xl font-bold tracking-tight text-foreground">
-            NeuronaHub
-          </span>
+        <a href="#" className="flex items-center">
+          <Image
+            src="/images/logo.jpeg"
+            alt="NeuronaHub"
+            width={160}
+            height={40}
+            className="h-8 w-auto"
+            priority
+          />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Navegación principal">

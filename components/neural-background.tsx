@@ -59,7 +59,7 @@ export function NeuralBackground() {
 
           if (distance < connectionDistance) {
             const opacity = (1 - distance / connectionDistance) * 0.15
-            ctx.strokeStyle = `rgba(45, 212, 191, ${opacity})`
+            ctx.strokeStyle = `rgba(46, 155, 218, ${opacity})`
             ctx.lineWidth = 1
             ctx.beginPath()
             ctx.moveTo(nodes[i].x, nodes[i].y)
@@ -70,7 +70,7 @@ export function NeuralBackground() {
       }
 
       nodes.forEach((node) => {
-        ctx.fillStyle = "rgba(45, 212, 191, 0.3)"
+        ctx.fillStyle = "rgba(46, 155, 218, 0.3)"
         ctx.beginPath()
         ctx.arc(node.x, node.y, 2, 0, Math.PI * 2)
         ctx.fill()
