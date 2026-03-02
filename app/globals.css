@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -14,39 +10,39 @@ body {
 
 @layer base {
   :root {
-    --background: 220 20% 4%;
-    --foreground: 210 20% 95%;
-    --card: 220 18% 7%;
+    --background: 218 36% 6%;
+    --foreground: 210 26% 96%;
+    --card: 220 28% 9%;
     --card-foreground: 210 20% 95%;
     --popover: 220 18% 7%;
     --popover-foreground: 210 20% 95%;
-    --primary: 202 72% 52%;
+    --primary: 199 80% 48%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 15% 12%;
+    --secondary: 220 22% 14%;
     --secondary-foreground: 210 20% 85%;
-    --muted: 220 15% 12%;
-    --muted-foreground: 215 15% 55%;
-    --accent: 202 72% 52%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 212 16% 66%;
+    --accent: 279 92% 67%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 15% 15%;
-    --input: 220 15% 15%;
-    --ring: 202 72% 52%;
-    --chart-1: 202 72% 52%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
+    --border: 219 23% 20%;
+    --input: 219 23% 20%;
+    --ring: 199 80% 48%;
+    --chart-1: 199 80% 48%;
+    --chart-2: 279 92% 67%;
+    --chart-3: 153 61% 45%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.75rem;
     --sidebar-background: 220 18% 7%;
     --sidebar-foreground: 210 20% 85%;
-    --sidebar-primary: 202 72% 52%;
+    --sidebar-primary: 199 80% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 220 15% 12%;
     --sidebar-accent-foreground: 210 20% 85%;
     --sidebar-border: 220 15% 15%;
-    --sidebar-ring: 202 72% 52%;
+    --sidebar-ring: 199 80% 48%;
   }
 }
 
@@ -56,5 +52,39 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(1200px 600px at 10% -10%, hsl(199 80% 48% / 0.2), transparent 60%),
+      radial-gradient(1000px 500px at 90% 0%, hsl(279 92% 67% / 0.14), transparent 55%),
+      radial-gradient(900px 400px at 50% 100%, hsl(199 80% 48% / 0.14), transparent 55%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.35);
+    color: hsl(var(--foreground));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .grain-overlay {
+    position: relative;
+  }
+
+  .grain-overlay::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0.2;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08) 0.5px, transparent 1px),
+      radial-gradient(circle at 70% 40%, rgba(255, 255, 255, 0.05) 0.5px, transparent 1px);
+    background-size: 3px 3px, 4px 4px;
+    mix-blend-mode: soft-light;
   }
 }

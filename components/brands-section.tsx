@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion"
 import {
+  ArrowRight,
   GraduationCap,
   Palette,
   BookOpen,
   Coffee,
-  ArrowUpRight,
 } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import {
   transitions,
   staggerContainer,
@@ -19,9 +20,9 @@ const brands = [
   {
     name: "Neurona Academy",
     icon: GraduationCap,
-    tagline: "Formación de alto impacto",
+    tagline: "Programa intensivo para vender con autoridad",
     description:
-      "Programas formativos intensivos para desarrollar competencias en marketing digital, ventas, liderazgo y crecimiento empresarial.",
+      "Ideal si tienes experiencia pero tus ventas no reflejan tu valor. Reestructuramos narrativa, oferta y embudo.",
     color: "from-sky-500/20 to-blue-500/20",
     borderColor: "hover:border-sky-500/50",
     iconBg: "bg-sky-500/10",
@@ -30,9 +31,9 @@ const brands = [
   {
     name: "Neurona BrandLab",
     icon: Palette,
-    tagline: "Laboratorio de marcas",
+    tagline: "Reposicionamiento premium de marca",
     description:
-      "Consultoría especializada en construcción de marca personal y corporativa. Estrategia, identidad visual y posicionamiento digital.",
+      "Para marcas que necesitan una presencia sólida y diferenciada para entrar a segmentos de mayor ticket.",
     color: "from-amber-500/20 to-orange-500/20",
     borderColor: "hover:border-amber-500/50",
     iconBg: "bg-amber-500/10",
@@ -41,9 +42,9 @@ const brands = [
   {
     name: "Neurona Learning",
     icon: BookOpen,
-    tagline: "Educación digital accesible",
+    tagline: "Escuela digital con aplicación inmediata",
     description:
-      "Plataforma educativa con cursos, talleres y recursos digitales diseñados para aprender a tu propio ritmo y aplicar de inmediato.",
+      "Biblioteca de talleres y playbooks para pasar del consumo de contenido a implementación con resultados.",
     color: "from-blue-500/20 to-indigo-500/20",
     borderColor: "hover:border-blue-500/50",
     iconBg: "bg-blue-500/10",
@@ -52,9 +53,9 @@ const brands = [
   {
     name: "Neurona Café",
     icon: Coffee,
-    tagline: "Comunidad y conexión",
+    tagline: "Comunidad de networking y colaboración",
     description:
-      "Espacio de encuentro para profesionales y emprendedores. Eventos, networking y contenido inspirador para nutrir tu camino.",
+      "Sesiones en vivo, conexiones estratégicas y espacios para validar decisiones con otros perfiles de alto rendimiento.",
     color: "from-rose-500/20 to-pink-500/20",
     borderColor: "hover:border-rose-500/50",
     iconBg: "bg-rose-500/10",
@@ -89,14 +90,14 @@ export function BrandsSection() {
           className="text-center"
         >
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Nuestras marcas
+            Programas y unidades
           </span>
           <h2 className="mt-4 font-display text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
-            <span className="text-balance">Cuatro pilares, un solo propósito</span>
+            <span className="text-balance">Elige la ruta que más acelera tu siguiente nivel</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-balance text-muted-foreground">
-            Cada marca dentro de NeuronaHub cumple un rol específico para cubrir todas las
-            dimensiones de tu crecimiento profesional y personal.
+            No necesitas hacer todo al mismo tiempo. Empiezas por la unidad con mayor retorno y
+            avanzas con una hoja de ruta integrada.
           </p>
         </motion.div>
 
@@ -114,7 +115,7 @@ export function BrandsSection() {
               variants={cardVariants}
               whileHover={{ y: -4, scale: 1.015 }}
               transition={transitions.springBouncy}
-              className={`group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all duration-300 ${brand.borderColor}`}
+              className={`group grain-overlay relative overflow-hidden rounded-2xl border border-border bg-card/75 p-8 transition-all duration-300 ${brand.borderColor}`}
             >
               {/* Background gradient on hover */}
               <div
@@ -126,7 +127,9 @@ export function BrandsSection() {
                   <div className={`flex h-14 w-14 items-center justify-center rounded-xl ${brand.iconBg}`}>
                     <brand.icon className={`h-7 w-7 ${brand.iconColor}`} />
                   </div>
-                  <ArrowUpRight className="h-5 w-5 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100" />
+                  <span className="rounded-full border border-border/80 bg-background/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                    Ruta especializada
+                  </span>
                 </div>
 
                 <h3 className="mt-6 font-display text-xl font-bold text-foreground">
@@ -138,6 +141,13 @@ export function BrandsSection() {
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                   {brand.description}
                 </p>
+                <Button
+                  variant="ghost"
+                  className="mt-5 h-auto p-0 text-sm font-semibold text-foreground hover:bg-transparent hover:text-primary"
+                >
+                  Quiero esta ruta
+                  <ArrowRight className="ml-1 h-4 w-4" />
+                </Button>
               </div>
             </motion.div>
           ))}

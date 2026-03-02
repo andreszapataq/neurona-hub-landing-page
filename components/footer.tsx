@@ -5,17 +5,22 @@ import Image from "next/image"
 import { staggerContainer, fadeInUp } from "@/lib/animations"
 
 const footerLinks = {
-  Marcas: [
+  Programas: [
     { label: "Neurona Academy", href: "#" },
     { label: "Neurona BrandLab", href: "#" },
     { label: "Neurona Learning", href: "#" },
     { label: "Neurona Café", href: "#" },
   ],
-  Ecosistema: [
+  Navegación: [
     { label: "Sobre nosotros", href: "#about" },
-    { label: "Formación", href: "#" },
-    { label: "Asesoría", href: "#" },
-    { label: "Comunidad", href: "#" },
+    { label: "Método", href: "#ecosystem" },
+    { label: "Resultados", href: "#testimonials" },
+    { label: "Preguntas frecuentes", href: "#faq" },
+  ],
+  Recursos: [
+    { label: "Checklist de posicionamiento", href: "#" },
+    { label: "Guía de oferta irresistible", href: "#" },
+    { label: "Plantilla de contenidos", href: "#" },
   ],
   Legal: [
     { label: "Términos de uso", href: "#" },
@@ -31,19 +36,19 @@ export function Footer({ year }: { year: number }) {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.6 }}
-      className="border-t border-border bg-card/50"
+      className="border-t border-border bg-card/60"
     >
       <div className="mx-auto max-w-7xl px-6 py-16">
         {/* Main grid — staggered entrance */}
         <motion.div
-          className="grid gap-12 md:grid-cols-2 lg:grid-cols-4"
+          className="grid gap-12 md:grid-cols-2 lg:grid-cols-5"
           variants={staggerContainer(0.08, 0.1)}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
         >
           {/* Brand */}
-          <motion.div variants={fadeInUp}>
+          <motion.div variants={fadeInUp} className="lg:col-span-2">
             <a href="#" className="flex items-center">
               <Image
                 src="/images/logo.svg"
@@ -54,9 +59,13 @@ export function Footer({ year }: { year: number }) {
               />
             </a>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Entrenar la mente, fortalecer la marca personal y potenciar el crecimiento
-              profesional y empresarial.
+              Diseñamos sistemas para que profesionales y marcas escalen con claridad, autoridad y
+              conversiones sostenibles.
             </p>
+            <p className="mt-4 text-sm text-muted-foreground">
+              contacto@neuronahub.com
+            </p>
+            <p className="text-sm text-muted-foreground">Bogota, Colombia</p>
           </motion.div>
 
           {/* Links */}

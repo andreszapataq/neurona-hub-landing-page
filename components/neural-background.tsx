@@ -87,7 +87,7 @@ export function NeuralBackground() {
           if (distSq < connectionDistanceSq) {
             const opacity =
               (1 - Math.sqrt(distSq) / connectionDistance) * 0.15
-            ctx.strokeStyle = `rgba(46, 155, 218, ${opacity})`
+            ctx.strokeStyle = `rgba(25, 157, 219, ${opacity})`
             ctx.beginPath()
             ctx.moveTo(nodes[i].x, nodes[i].y)
             ctx.lineTo(nodes[j].x, nodes[j].y)
@@ -97,7 +97,7 @@ export function NeuralBackground() {
       }
 
       // Nodes
-      ctx.fillStyle = "rgba(46, 155, 218, 0.3)"
+      ctx.fillStyle = "rgba(25, 157, 219, 0.34)"
       for (let i = 0; i < nodes.length; i++) {
         ctx.beginPath()
         ctx.arc(nodes[i].x, nodes[i].y, 2, 0, Math.PI * 2)
@@ -150,7 +150,7 @@ export function NeuralBackground() {
           if (distSq < connectionDistanceSq) {
             const opacity =
               (1 - Math.sqrt(distSq) / connectionDistance) * 0.15
-            ctx.strokeStyle = `rgba(46, 155, 218, ${opacity})`
+            ctx.strokeStyle = `rgba(25, 157, 219, ${opacity})`
             ctx.beginPath()
             ctx.moveTo(nodes[i].x, nodes[i].y)
             ctx.lineTo(nodes[j].x, nodes[j].y)
@@ -160,7 +160,7 @@ export function NeuralBackground() {
       }
 
       // Draw nodes
-      ctx.fillStyle = "rgba(46, 155, 218, 0.3)"
+      ctx.fillStyle = "rgba(25, 157, 219, 0.34)"
       for (let i = 0; i < nodes.length; i++) {
         ctx.beginPath()
         ctx.arc(nodes[i].x, nodes[i].y, 2, 0, Math.PI * 2)

@@ -3,7 +3,9 @@ import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
 import { EcosystemSection } from "@/components/ecosystem-section"
 import { BrandsSection } from "@/components/brands-section"
+import { TestimonialsSection } from "@/components/testimonials-section"
 import { AboutSection } from "@/components/about-section"
+import { FaqSection } from "@/components/faq-section"
 import { CtaSection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 import { ScrollProgress } from "@/components/scroll-progress"
@@ -18,9 +20,11 @@ export default function Page() {
       <Navbar />
       <main className="relative z-10">
         <HeroSection />
+        <TestimonialsSection />
         <EcosystemSection />
         <BrandsSection />
         <AboutSection />
+        <FaqSection />
         <CtaSection />
       </main>
       <Footer year={currentYear} />

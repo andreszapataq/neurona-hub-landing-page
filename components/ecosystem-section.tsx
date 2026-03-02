@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Network, Lightbulb, Target, Layers } from "lucide-react"
+import { ChartLine, Compass, Layers, Rocket } from "lucide-react"
 import {
   transitions,
   staggerContainer,
@@ -11,28 +11,32 @@ import {
 
 const pillars = [
   {
-    icon: Lightbulb,
-    title: "Formación estratégica",
+    icon: Compass,
+    title: "Diagnóstico y foco",
     description:
-      "Programas diseñados para desarrollar habilidades de alto impacto en marketing digital, liderazgo y desarrollo profesional.",
-  },
-  {
-    icon: Target,
-    title: "Asesoría personalizada",
-    description:
-      "Acompañamiento one-to-one para definir y ejecutar estrategias de marca personal y crecimiento empresarial.",
-  },
-  {
-    icon: Network,
-    title: "Educación digital",
-    description:
-      "Plataformas y contenidos educativos que conectan el conocimiento con la acción práctica y resultados medibles.",
+      "Analizamos oferta, narrativa y embudo para detectar bloqueos de percepción y venta en tiempo real.",
+    tag: "Semana 1",
   },
   {
     icon: Layers,
-    title: "Productos funcionales",
+    title: "Arquitectura de propuesta",
     description:
-      "Herramientas, recursos y productos diseñados para potenciar la productividad y la presencia digital.",
+      "Definimos mensaje, autoridad y activos clave para que tu valor se entienda, se recuerde y se pague.",
+    tag: "Semana 2",
+  },
+  {
+    icon: Rocket,
+    title: "Ejecución guiada",
+    description:
+      "Implementas con mentoría práctica, SOPs y ritmo semanal para pasar de ideas a acciones rentables.",
+    tag: "Semanas 3-6",
+  },
+  {
+    icon: ChartLine,
+    title: "Optimización continua",
+    description:
+      "Medimos resultados y ajustamos mensajes, pricing y canales para escalar sin perder claridad estratégica.",
+    tag: "Iterativo",
   },
 ]
 
@@ -58,14 +62,14 @@ export function EcosystemSection() {
           className="text-center"
         >
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Ecosistema
+            Método Neurona
           </span>
           <h2 className="mt-4 font-display text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
-            <span className="text-balance">Un ecosistema diseñado para el crecimiento</span>
+            <span className="text-balance">Un sistema operativo para crecer con estrategia</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-balance text-muted-foreground">
-            NeuronaHub no opera como una unidad comercial independiente, sino como el paraguas
-            estratégico que da coherencia a todas las líneas de negocio.
+            Cada etapa conecta posicionamiento, contenido, oferta y conversión para construir
+            tracción real y sostenible.
           </p>
         </motion.div>
 
@@ -83,11 +87,14 @@ export function EcosystemSection() {
               variants={cardVariants}
               whileHover={{ y: -6, scale: 1.02 }}
               transition={transitions.springBouncy}
-              className="group relative overflow-hidden rounded-xl border border-border bg-card p-8 transition-colors hover:border-primary/50"
+              className="group grain-overlay relative overflow-hidden rounded-2xl border border-border/80 bg-card/75 p-8 transition-colors hover:border-primary/50"
             >
-              <div className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-primary/5 transition-transform duration-500 group-hover:scale-[2]" />
+              <div className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-primary/10 transition-transform duration-500 group-hover:scale-[2.2]" />
               <div className="relative">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                <div className="mb-5 inline-flex rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-primary">
+                  {pillar.tag}
+                </div>
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/15">
                   <pillar.icon className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="mt-6 font-display text-lg font-semibold text-foreground">

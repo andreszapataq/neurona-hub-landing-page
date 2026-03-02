@@ -1,16 +1,18 @@
 "use client"
 
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { ArrowUpRight, Menu, X } from "lucide-react"
 import { useRef, useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { transitions, staggerContainer } from "@/lib/animations"
 
 const navLinks = [
-  { label: "Ecosistema", href: "#ecosystem" },
-  { label: "Marcas", href: "#brands" },
+  { label: "Método", href: "#ecosystem" },
+  { label: "Programas", href: "#brands" },
+  { label: "Resultados", href: "#testimonials" },
   { label: "Nosotros", href: "#about" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contacto", href: "#contact" },
 ]
 
@@ -74,8 +76,8 @@ export function Navbar() {
       transition={{ type: "spring", stiffness: 260, damping: 30 }}
       className={`fixed top-0 z-50 w-full border-b backdrop-blur-md md:backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-300 ${
         scrolled
-          ? "border-border/60 bg-background/90 shadow-sm shadow-black/5"
-          : "border-border/30 bg-background/60"
+          ? "border-border/70 bg-background/90 shadow-sm shadow-black/20"
+          : "border-border/40 bg-background/60"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -112,29 +114,46 @@ export function Navbar() {
               variants={navItemVariants}
               whileHover={{ y: -1 }}
               transition={transitions.springBouncy}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
             </motion.a>
           ))}
         </motion.nav>
 
+        <div className="hidden items-center gap-3 md:flex">
+          <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+            Cohorte limitada marzo
+          </span>
+          <motion.div
+            className="hidden md:block"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ ...transitions.spring, delay: 0.6 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              transition={transitions.springBouncy}
+            >
+              <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                Quiero diagnóstico gratis
+                <ArrowUpRight className="ml-1" />
+              </Button>
+            </motion.div>
+          </motion.div>
+        </div>
+
         {/* Desktop CTA */}
         <motion.div
-          className="hidden md:block"
+          className="md:hidden"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ ...transitions.spring, delay: 0.6 }}
         >
-          <motion.div
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            transition={transitions.springBouncy}
-          >
-            <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
-              Comienza ahora
-            </Button>
-          </motion.div>
+          <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
+            Plazas limitadas
+          </span>
         </motion.div>
 
         {/* Hamburger — animated icon rotation */}
@@ -179,7 +198,7 @@ export function Navbar() {
               ))}
               <motion.div variants={mobileLinkVariants}>
                 <Button size="sm" className="mt-2 w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  Comienza ahora
+                  Quiero diagnóstico gratis
                 </Button>
               </motion.div>
             </nav>

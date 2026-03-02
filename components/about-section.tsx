@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { CheckCircle2 } from "lucide-react"
+import { CheckCircle2, ShieldCheck } from "lucide-react"
 import {
   transitions,
   staggerContainer,
@@ -11,12 +11,12 @@ import {
 } from "@/lib/animations"
 
 const values = [
-  "Integrar y dar coherencia a todas las líneas de negocio",
-  "Entrenar la mente para el crecimiento personal y profesional",
-  "Fortalecer la marca personal como activo estratégico",
-  "Potenciar el crecimiento empresarial con herramientas digitales",
-  "Crear comunidad y conexiones de valor real",
-  "Democratizar el acceso a educación de calidad",
+  "Estrategia antes que estética vacía o volumen sin foco.",
+  "Sistemas simples para ejecutar sin desgaste mental.",
+  "Marca personal como activo empresarial, no solo visibilidad.",
+  "Decisiones guiadas por datos y feedback del mercado.",
+  "Acompañamiento humano para sostener consistencia.",
+  "Educación accionable: menos teoría, mas implementación.",
 ]
 
 const gridItemVariants = {
@@ -51,7 +51,7 @@ export function AboutSection() {
             className="relative order-2 lg:order-1"
           >
             <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-1">
-              <div className="rounded-xl bg-gradient-to-br from-primary/10 via-secondary to-card p-6 sm:p-12">
+              <div className="grain-overlay rounded-xl bg-gradient-to-br from-primary/15 via-secondary to-card p-6 sm:p-12">
                 <motion.div
                   className="grid grid-cols-2 gap-4"
                   variants={staggerContainer(0.06, 0.15)}
@@ -60,10 +60,10 @@ export function AboutSection() {
                   viewport={viewportOnce}
                 >
                   {[
-                    { label: "Academy", desc: "Formación" },
-                    { label: "BrandLab", desc: "Marca" },
-                    { label: "Learning", desc: "Educación" },
-                    { label: "Café", desc: "Comunidad" },
+                    { label: "Claridad", desc: "Mensaje" },
+                    { label: "Oferta", desc: "Estructura" },
+                    { label: "Sistema", desc: "Ejecución" },
+                    { label: "Escala", desc: "Optimización" },
                   ].map((item) => (
                     <motion.div
                       key={item.label}
@@ -87,11 +87,10 @@ export function AboutSection() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={viewportOnce}
-                  className="mt-4 flex items-center justify-center rounded-xl border border-primary/30 bg-primary/10 p-4 text-center"
+                  className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-primary/30 bg-primary/10 p-4 text-center"
                 >
-                  <span className="font-display text-lg font-bold text-primary">
-                    NeuronaHub
-                  </span>
+                  <ShieldCheck className="h-5 w-5 text-primary" />
+                  <span className="font-display text-lg font-bold text-primary">Framework NeuronaHub</span>
                 </motion.div>
               </div>
             </div>
@@ -106,17 +105,17 @@ export function AboutSection() {
             className="order-1 lg:order-2"
           >
             <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-              Nosotros
+              Manifiesto
             </span>
             <h2 className="mt-4 font-display text-3xl font-bold text-foreground sm:text-4xl">
               <span className="text-balance">
-                El paraguas estratégico que conecta todo
+                No vendemos humo. Construimos posicionamiento que factura.
               </span>
             </h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
-              NeuronaHub es la marca matriz del ecosistema. Su función principal es integrar,
-              ordenar y dar coherencia a todas las líneas de negocio: formación, asesoría,
-              educación digital y productos funcionales.
+              NeuronaHub nace para eliminar la brecha entre saber mucho y lograr poco. Combinamos
+              pensamiento estratégico, ejecución guiada y accountability para que avances con una
+              ruta concreta, no con tareas sueltas.
             </p>
 
             <motion.ul
