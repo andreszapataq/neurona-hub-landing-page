@@ -123,7 +123,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 md:flex">
           <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-            Cohorte limitada marzo
+            Curso limitado marzo
           </span>
           <motion.div
             className="hidden md:block"
