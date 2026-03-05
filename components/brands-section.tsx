@@ -7,6 +7,8 @@ import {
   Palette,
   BookOpen,
   Coffee,
+  Building2,
+  BrainCircuit,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -30,7 +32,7 @@ const brands = [
   },
   {
     name: "Neurona BrandLab",
-    icon: Palette,
+    icon: BrainCircuit,
     tagline: "Reposicionamiento premium de marca",
     description:
       "Para marcas que necesitan una presencia sólida y diferenciada para entrar a segmentos de mayor ticket.",
