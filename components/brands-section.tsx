@@ -23,6 +23,7 @@ interface Brand {
   logo: string | null
   tagline: string
   accentColor: string
+  accentRgb: string
   borderColor: string
   screenshot: string | null
   href: string
@@ -35,6 +36,7 @@ const brands: Brand[] = [
     logo: null,
     tagline: "Programa intensivo para vender con autoridad",
     accentColor: "text-sky-400",
+    accentRgb: "56,189,248",
     borderColor: "hover:border-sky-500/50",
     screenshot: "/images/brands/neurona-academy.webp",
     href: "https://jhonnyaponza.org/",
@@ -45,6 +47,7 @@ const brands: Brand[] = [
     logo: null,
     tagline: "Reposicionamiento premium de marca",
     accentColor: "text-emerald-400",
+    accentRgb: "52,211,153",
     borderColor: "hover:border-emerald-500/50",
     screenshot: "/images/brands/neurona-brandlab.webp",
     href: "#",
@@ -55,6 +58,7 @@ const brands: Brand[] = [
     logo: null,
     tagline: "Escuela digital con aplicación inmediata",
     accentColor: "text-orange-400",
+    accentRgb: "251,146,60",
     borderColor: "hover:border-orange-500/50",
     screenshot: "/images/brands/neurona-learning.webp",
     href: "https://hotmart.com/es/marketplace/productos/el-negocio-eres-tu/",
@@ -65,6 +69,7 @@ const brands: Brand[] = [
     logo: null,
     tagline: "Comunidad de networking y colaboración",
     accentColor: "text-amber-300",
+    accentRgb: "252,211,77",
     borderColor: "hover:border-amber-400/50",
     screenshot: "/images/brands/neurona-cafe.webp",
     href: "#",
@@ -117,67 +122,90 @@ export function BrandsSection() {
           whileInView="visible"
           viewport={viewportOnce}
         >
-          {brands.map((brand) => (
-            <motion.a
-              key={brand.name}
-              href={brand.href}
-              target={brand.href !== "#" ? "_blank" : undefined}
-              rel={brand.href !== "#" ? "noopener noreferrer" : undefined}
-              variants={cardVariants}
-              whileHover={{ y: -6 }}
-              transition={transitions.spring}
-              className={`group grain-overlay relative flex aspect-[3/2] cursor-pointer flex-col justify-end overflow-hidden rounded-2xl border border-border bg-card transition-[border-color] duration-300 md:aspect-[16/10] ${brand.borderColor}`}
-            >
-              {/* Screenshot background */}
-              {brand.screenshot ? (
-                <Image
-                  src={brand.screenshot}
-                  alt=""
-                  fill
-                  className="pointer-events-none object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+          {brands.map((brand) => {
+            const glow = `0 0 25px -5px rgba(${brand.accentRgb},0.15), inset 0 1px 0 0 rgba(255,255,255,0.05)`
+            const glowHover = `0 0 40px -5px rgba(${brand.accentRgb},0.4), inset 0 1px 0 0 rgba(255,255,255,0.1)`
+
+            return (
+              <motion.a
+                key={brand.name}
+                href={brand.href}
+                target={brand.href !== "#" ? "_blank" : undefined}
+                rel={brand.href !== "#" ? "noopener noreferrer" : undefined}
+                variants={cardVariants}
+                whileHover={{ y: -6, boxShadow: glowHover }}
+                transition={transitions.spring}
+                style={{ boxShadow: glow }}
+                className={`group grain-overlay relative flex aspect-[3/2] cursor-pointer flex-col justify-end overflow-hidden rounded-2xl border border-border/60 bg-card transition-[border-color] duration-300 md:aspect-[16/10] ${brand.borderColor}`}
+              >
+                {/* Screenshot background */}
+                {brand.screenshot ? (
+                  <Image
+                    src={brand.screenshot}
+                    alt=""
+                    fill
+                    className="pointer-events-none object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-card via-card to-muted/30" />
+                )}
+
+                {/* Dark tint overlay */}
+                <div
+                  className="absolute inset-0 z-[2] transition-opacity duration-500 group-hover:opacity-75"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom, hsl(218 36% 6% / 0.3), hsl(218 36% 6% / 0.1) 50%, hsl(218 36% 6% / 0.6))",
+                  }}
                 />
-              ) : (
-                <div className="absolute inset-0 bg-gradient-to-br from-card via-card to-muted/30" />
-              )}
 
-              {/* "Quiero esta ruta" CTA — top right */}
-              <div className="absolute right-4 top-4 z-10">
-                <span className="flex items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-3.5 py-1.5 text-[12px] font-semibold text-white/90 backdrop-blur-md transition-colors duration-300 group-hover:bg-white/15 group-hover:text-white">
-                  Quiero esta ruta
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
-                </span>
-              </div>
+                {/* Top luminous accent line */}
+                <div
+                  className="absolute left-[10%] right-[10%] top-0 z-[3] h-px"
+                  style={{
+                    background: `linear-gradient(90deg, transparent, rgba(${brand.accentRgb}, 0.5), transparent)`,
+                  }}
+                />
 
-              {/* Frosted panel */}
-              <div className="relative z-10 mt-auto">
-                <div className="flex items-center gap-4 border-t border-white/10 bg-black/50 px-5 py-4 backdrop-blur-xl">
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-display text-base font-bold text-white">
-                      {brand.name}
-                    </h3>
-                    <p className={`mt-0.5 text-[13px] font-medium ${brand.accentColor}`}>
-                      {brand.tagline}
-                    </p>
-                  </div>
+                {/* "Quiero esta ruta" CTA — top right */}
+                <div className="absolute right-4 top-4 z-10">
+                  <span className="flex items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-3.5 py-1.5 text-[12px] font-semibold text-white/90 backdrop-blur-md transition-colors duration-300 group-hover:bg-white/15 group-hover:text-white">
+                    Quiero esta ruta
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                  </span>
+                </div>
 
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white/10 ring-1 ring-white/10">
-                    {brand.logo ? (
-                      <Image
-                        src={brand.logo}
-                        alt={brand.name}
-                        width={24}
-                        height={24}
-                        className="h-6 w-6 object-contain"
-                      />
-                    ) : (
-                      <brand.icon className="h-5 w-5 text-white/90" />
-                    )}
+                {/* Frosted panel */}
+                <div className="relative z-10 mt-auto">
+                  <div className="flex items-center gap-4 border-t border-white/10 bg-black/50 px-5 py-4 backdrop-blur-xl">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-display text-base font-bold text-white">
+                        {brand.name}
+                      </h3>
+                      <p className={`mt-0.5 text-[13px] font-medium ${brand.accentColor}`}>
+                        {brand.tagline}
+                      </p>
+                    </div>
+
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white/10 ring-1 ring-white/10">
+                      {brand.logo ? (
+                        <Image
+                          src={brand.logo}
+                          alt={brand.name}
+                          width={24}
+                          height={24}
+                          className="h-6 w-6 object-contain"
+                        />
+                      ) : (
+                        <brand.icon className="h-5 w-5 text-white/90" />
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.a>
-          ))}
+              </motion.a>
+            )
+          })}
         </motion.div>
       </div>
     </section>
