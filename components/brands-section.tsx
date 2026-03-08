@@ -126,7 +126,7 @@ export function BrandsSection() {
               variants={cardVariants}
               whileHover={{ y: -6 }}
               transition={transitions.spring}
-              className={`group grain-overlay relative flex aspect-[16/10] cursor-pointer flex-col justify-end overflow-hidden rounded-2xl border border-border bg-card transition-[border-color] duration-300 ${brand.borderColor}`}
+              className={`group grain-overlay relative flex aspect-[3/2] cursor-pointer flex-col justify-end overflow-hidden rounded-2xl border border-border bg-card transition-[border-color] duration-300 md:aspect-[16/10] ${brand.borderColor}`}
             >
               {/* Screenshot background */}
               {brand.screenshot ? (
