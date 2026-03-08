@@ -21,8 +21,8 @@ export default function Page() {
       <main className="relative z-10">
         <HeroSection />
         <TestimonialsSection />
-        <EcosystemSection />
         <BrandsSection />
+        <EcosystemSection />
         <AboutSection />
         <FaqSection />
         <CtaSection />

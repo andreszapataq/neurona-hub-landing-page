@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react"
+import { ArrowRight, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { transitions, staggerContainer } from "@/lib/animations"
 
@@ -78,29 +78,13 @@ export function HeroSection() {
         {/* Subtitle */}
         <motion.p
           variants={heroItemVariants}
-          className="mx-auto mt-7 max-w-3xl text-balance text-lg leading-relaxed text-muted-foreground md:text-xl"
+          className="mx-auto mt-7 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground md:text-xl"
         >
-          NeuronaHub integra estrategia, formación y acompañamiento para escalar tu marca personal
-          o negocio digital sin improvisar contenido ni depender de la suerte.
+          Estrategia, formación y acompañamiento para escalar tu marca personal o negocio digital
+          sin improvisar contenido ni depender de la suerte.
         </motion.p>
 
-        <motion.div
-          variants={heroItemVariants}
-          className="mx-auto mt-7 flex max-w-3xl flex-wrap items-center justify-center gap-3 text-sm text-foreground/90"
-        >
-          {[
-            "Plan de acción personalizado",
-            "Ejecución con métricas claras",
-            "Soporte estratégico 1:1",
-          ].map((item) => (
-            <div key={item} className="flex items-center gap-2 rounded-full border border-border/70 bg-card/70 px-4 py-2">
-              <CheckCircle2 className="h-4 w-4 text-primary" />
-              <span>{item}</span>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* CTA Buttons — with hover & tap micro-interactions */}
+        {/* CTA Buttons */}
         <motion.div
           variants={heroItemVariants}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
@@ -133,11 +117,7 @@ export function HeroSection() {
           </motion.div>
         </motion.div>
 
-        <motion.p variants={heroItemVariants} className="mt-4 text-xs tracking-wide text-muted-foreground">
-          Sin permanencias forzadas. Empiezas con una hoja de ruta accionable.
-        </motion.p>
-
-        {/* Stats — nested stagger container */}
+        {/* Stats */}
         <motion.div
           variants={statContainerVariants}
           className="mt-14 grid grid-cols-2 gap-5 rounded-2xl border border-border/70 bg-card/60 p-6 backdrop-blur md:grid-cols-4 md:gap-8 md:p-8"
