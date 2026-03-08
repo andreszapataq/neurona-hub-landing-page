@@ -156,7 +156,7 @@ export function BrandsSection() {
                   className="absolute inset-0 z-[2] transition-opacity duration-500 group-hover:opacity-75"
                   style={{
                     background:
-                      "linear-gradient(to bottom, hsl(218 36% 6% / 0.3), hsl(218 36% 6% / 0.1) 50%, hsl(218 36% 6% / 0.6))",
+                      "linear-gradient(to bottom, hsl(218 36% 6% / 0.22), hsl(218 36% 6% / 0.05) 50%, hsl(218 36% 6% / 0.55))",
                   }}
                 />
 
