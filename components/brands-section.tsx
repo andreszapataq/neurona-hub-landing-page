@@ -50,7 +50,7 @@ const brands: Brand[] = [
     accentRgb: "52,211,153",
     borderColor: "hover:border-emerald-500/50",
     screenshot: "/images/brands/neurona-brandlab.webp",
-    href: "#",
+    href: "#testimonials",
   },
   {
     name: "Neurona Learning",
@@ -72,7 +72,7 @@ const brands: Brand[] = [
     accentRgb: "252,211,77",
     borderColor: "hover:border-amber-400/50",
     screenshot: "/images/brands/neurona-cafe.webp",
-    href: "#",
+    href: "#contact",
   },
 ]
 
@@ -130,8 +130,8 @@ export function BrandsSection() {
               <motion.a
                 key={brand.name}
                 href={brand.href}
-                target={brand.href !== "#" ? "_blank" : undefined}
-                rel={brand.href !== "#" ? "noopener noreferrer" : undefined}
+                target={brand.href.startsWith("http") ? "_blank" : undefined}
+                rel={brand.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 variants={cardVariants}
                 whileHover={{ y: -6, boxShadow: glowHover }}
                 transition={transitions.spring}
