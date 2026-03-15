@@ -9,6 +9,7 @@ import {
   Coffee,
   BrainCircuit,
   type LucideIcon,
+  Brain,
 } from "lucide-react"
 import {
   transitions,
@@ -64,14 +65,14 @@ const brands: Brand[] = [
     href: "https://hotmart.com/es/marketplace/productos/el-negocio-eres-tu/",
   },
   {
-    name: "Neurona Café",
-    icon: Coffee,
+    name: "Super Food",
+    icon: Brain,
     logo: null,
-    tagline: "Comunidad de networking y colaboración",
+    tagline: "Alimentos para tus neuronas",
     accentColor: "text-amber-300",
     accentRgb: "252,211,77",
     borderColor: "hover:border-amber-400/50",
-    screenshot: "/images/brands/neurona-cafe.webp",
+    screenshot: "/images/brands/super-food.webp",
     href: "#contact",
   },
 ]

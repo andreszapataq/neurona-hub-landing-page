@@ -105,10 +105,16 @@ export function CtaSection() {
                 transition={transitions.springBouncy}
               >
                 <Button
+                  asChild
                   size="lg"
                   variant="outline"
                   className="h-12 border-border bg-background/50 px-8 text-base text-foreground hover:bg-secondary"
                 >
+                  <a
+                    href="https://wa.me/573138298284?text=Hola%2C%20me%20gustaría%20agendar%20una%20sesión%20estratégica"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                   <span className="flex size-4 shrink-0 items-center justify-center self-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -121,6 +127,7 @@ export function CtaSection() {
                     </svg>
                   </span>
                   Hablar por WhatsApp
+                  </a>
                 </Button>
               </motion.div>
             </motion.div>
