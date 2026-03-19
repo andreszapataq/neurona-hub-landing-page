@@ -92,11 +92,14 @@ export function CtaSection() {
                 transition={transitions.springBouncy}
               >
                 <Button
+                  asChild
                   size="lg"
                   className="h-12 bg-primary px-8 text-base text-primary-foreground shadow-[0_0_40px_hsl(var(--primary)/0.35)] hover:bg-primary/90"
                 >
-                  Agendar mi sesión ahora
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <a href="https://calendar.app.google/Q6CEa9jN1BbW1iqG8" target="_blank" rel="noopener noreferrer">
+                    Agendar mi sesión ahora
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
                 </Button>
               </motion.div>
               <motion.div

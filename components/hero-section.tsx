@@ -95,11 +95,14 @@ export function HeroSection() {
             transition={transitions.springBouncy}
           >
             <Button
+              asChild
               size="lg"
               className="h-12 bg-primary px-8 text-base text-primary-foreground shadow-[0_0_40px_hsl(var(--primary)/0.35)] hover:bg-primary/90"
             >
-              Reservar sesión estratégica
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <a href="https://calendar.app.google/Q6CEa9jN1BbW1iqG8" target="_blank" rel="noopener noreferrer">
+                Reservar sesión estratégica
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
             </Button>
           </motion.div>
           <motion.div
@@ -108,11 +111,14 @@ export function HeroSection() {
             transition={transitions.springBouncy}
           >
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="h-12 border-border bg-background/50 px-8 text-base text-foreground hover:bg-secondary"
             >
-              Ver casos de éxito
+              <a href="#testimonials">
+                Ver casos de éxito
+              </a>
             </Button>
           </motion.div>
         </motion.div>

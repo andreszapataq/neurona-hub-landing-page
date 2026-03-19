@@ -63,9 +63,9 @@ export function Footer({ year }: { year: number }) {
               conversiones sostenibles.
             </p>
             <p className="mt-4 text-sm text-muted-foreground">
-              contacto@neuronahub.com
+              ceo@neuronahub.com
             </p>
-            <p className="text-sm text-muted-foreground">Bogota, Colombia</p>
+            <p className="text-sm text-muted-foreground">Cali, Colombia</p>
           </motion.div>
 
           {/* Links */}

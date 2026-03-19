@@ -83,7 +83,7 @@ export function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <motion.a
-          href="#"
+          href="/"
           className="flex items-center"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
@@ -136,9 +136,11 @@ export function Navbar() {
               whileTap={{ scale: 0.96 }}
               transition={transitions.springBouncy}
             >
-              <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                Quiero diagnóstico gratis
-                <ArrowUpRight className="ml-1" />
+              <Button asChild size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <a href="https://calendar.app.google/Q6CEa9jN1BbW1iqG8" target="_blank" rel="noopener noreferrer">
+                  Quiero diagnóstico gratis
+                  <ArrowUpRight className="ml-1" />
+                </a>
               </Button>
             </motion.div>
           </motion.div>
@@ -197,8 +199,10 @@ export function Navbar() {
                 </motion.a>
               ))}
               <motion.div variants={mobileLinkVariants}>
-                <Button size="sm" className="mt-2 w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  Quiero diagnóstico gratis
+                <Button asChild size="sm" className="mt-2 w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                  <a href="https://calendar.app.google/Q6CEa9jN1BbW1iqG8" target="_blank" rel="noopener noreferrer">
+                    Quiero diagnóstico gratis
+                  </a>
                 </Button>
               </motion.div>
             </nav>
