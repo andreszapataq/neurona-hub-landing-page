@@ -126,14 +126,14 @@ export function BrandsSection() {
           </span>
           <h2 className="mt-4 font-display text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
             <span className="text-balance">
-              Soluciones diseñadas para transformar la forma en que{" "}
+              Soluciones diseñadas para transformar la forma en que las{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                personas y equipos que venden.
+                personas y equipos venden.
               </span>
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-balance text-muted-foreground md:text-lg">
-            Programas diseñados para desarrollar la forma en que piensas, comunicas y conviertes en ventas.
+            Programas diseñados para desarrollar la forma en que piensas, comunicas y conviertes oportunidades en ventas.
           </p>
         </motion.div>
 

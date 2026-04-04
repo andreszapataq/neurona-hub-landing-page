@@ -18,12 +18,12 @@ const faqs = [
   {
     question: "¿Necesito tener una audiencia grande para empezar?",
     answer:
-      "No. No se trata de tener más audiencia, sino de tener mejor posicionamiento. Puedes vender con claridad, incluso con audiencias pequeñas.",
+      "No se trata de tener más audiencia, sino de tener mejor posicionamiento. Puedes vender con claridad, incluso con audiencias pequeñas.",
   },
   {
     question: "¿Esto es capacitación?",
     answer:
-      "No. Es un sistema aplicado para generar resultados en ventas.",
+      "Es un sistema aplicado para generar resultados en ventas.",
   },
 ]
 

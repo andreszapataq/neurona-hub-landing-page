@@ -11,12 +11,11 @@ import {
 } from "@/lib/animations"
 
 const values = [
-  "Estrategia antes que estética vacía o volumen sin foco.",
-  "Sistemas simples para ejecutar sin desgaste mental.",
-  "Marca personal como activo empresarial, no solo visibilidad.",
-  "Decisiones guiadas por datos y feedback del mercado.",
-  "Acompañamiento humano para sostener consistencia.",
-  "Educación accionable: menos teoría, mas implementación.",
+  "Estrategia antes que volumen sin dirección.",
+  "Sistemas simples para ejecutar sin desgaste.",
+  "Marca personal como activo que vende.",
+  "Decisiones basadas en datos, no intuición.",
+  "Ejecución constante, no motivación momentánea.",
 ]
 
 const gridItemVariants = {
@@ -60,10 +59,10 @@ export function AboutSection() {
                   viewport={viewportOnce}
                 >
                   {[
-                    { label: "Claridad", desc: "Mensaje" },
-                    { label: "Oferta", desc: "Estructura" },
-                    { label: "Sistema", desc: "Ejecución" },
-                    { label: "Escala", desc: "Optimización" },
+                    { label: "Identidad", desc: "Posicionamiento" },
+                    { label: "Visibilidad", desc: "Percepción" },
+                    { label: "Rentabilidad", desc: "Ventas" },
+                    { label: "Optimización", desc: "Escala" },
                   ].map((item) => (
                     <motion.div
                       key={item.label}
@@ -136,6 +135,10 @@ export function AboutSection() {
                 </motion.li>
               ))}
             </motion.ul>
+
+            <p className="mt-8 text-sm font-medium italic text-foreground">
+              No es lo que sabes. Es lo que el mercado percibe de ti.
+            </p>
           </motion.div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ChartLine, Compass, Layers, Rocket } from "lucide-react"
+import { Compass, Eye, TrendingUp } from "lucide-react"
 import {
   transitions,
   staggerContainer,
@@ -12,31 +12,24 @@ import {
 const pillars = [
   {
     icon: Compass,
-    title: "Diagnóstico y foco",
+    title: "Identidad",
     description:
-      "Analizamos oferta, narrativa y embudo para detectar bloqueos de percepción y venta en tiempo real.",
-    tag: "Semana 1",
+      "Definimos quién eres en el mercado, cómo piensas y cómo te posicionas frente al cliente.",
+    tag: "Identidad",
   },
   {
-    icon: Layers,
-    title: "Arquitectura de propuesta",
+    icon: Eye,
+    title: "Visibilidad",
     description:
-      "Definimos mensaje, autoridad y activos clave para que tu valor se entienda, se recuerde y se pague.",
-    tag: "Semana 2",
+      "Construimos claridad en el mensaje y la percepción, integrando tu marca personal como activo estratégico para que el mercado te entienda, te recuerde y te elija.",
+    tag: "Visibilidad",
   },
   {
-    icon: Rocket,
-    title: "Ejecución guiada",
+    icon: TrendingUp,
+    title: "Rentabilidad",
     description:
-      "Implementas con mentoría práctica, SOPs y ritmo semanal para pasar de ideas a acciones rentables.",
-    tag: "Semanas 3-6",
-  },
-  {
-    icon: ChartLine,
-    title: "Optimización continua",
-    description:
-      "Medimos resultados y ajustamos mensajes, pricing y canales para escalar sin perder claridad estratégica.",
-    tag: "Iterativo",
+      "Transformamos el posicionamiento en resultados medibles en ventas.",
+    tag: "Rentabilidad",
   },
 ]
 
@@ -74,7 +67,7 @@ export function EcosystemSection() {
 
         {/* Cards — staggered entrance + hover lift */}
         <motion.div
-          className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
           variants={staggerContainer(0.08, 0.1)}
           initial="hidden"
           whileInView="visible"
