@@ -67,11 +67,11 @@ export function HeroSection() {
           className="font-display text-4xl font-bold leading-[1.04] tracking-tight text-foreground sm:text-5xl md:text-7xl"
         >
           <span className="text-balance">
-            Convierte tu conocimiento en{" "}
+            Desarrollamos equipos comerciales que convierten conocimiento en{" "}
             <span className="bg-gradient-to-r from-primary via-sky-300 to-accent bg-clip-text text-transparent">
-              demanda real
+              posicionamiento
             </span>{" "}
-            y ventas consistentes.
+            y ventas.
           </span>
         </motion.h1>
 
@@ -80,8 +80,7 @@ export function HeroSection() {
           variants={heroItemVariants}
           className="mx-auto mt-7 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground md:text-xl"
         >
-          Estrategia, formación y acompañamiento para escalar tu marca personal o negocio digital
-          sin improvisar contenido ni depender de la suerte.
+          Sistema basado en identidad, visibilidad y rentabilidad para transformar la forma en que tu equipo piensa, comunica y vende.
         </motion.p>
 
         {/* CTA Buttons */}

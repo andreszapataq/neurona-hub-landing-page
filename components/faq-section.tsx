@@ -6,24 +6,24 @@ import { fadeInUp, viewportOnce } from "@/lib/animations"
 
 const faqs = [
   {
-    question: "Esto es para marca personal o para empresa?",
+    question: "¿Esto es para marca personal o para empresa?",
     answer:
-      "Funciona para ambos. Adaptamos la estrategia segun tu etapa: profesional independiente, equipo comercial o marca en proceso de escalado.",
+      "Es para quienes venden. Trabajamos con emprendedores, líderes y equipos comerciales que necesitan estructura para posicionarse y convertir. El sistema se adapta al contexto, no al revés.",
   },
   {
-    question: "Cuanto tiempo tarda en verse un cambio real?",
+    question: "¿Cuánto tiempo tarda en verse un cambio real?",
     answer:
-      "Normalmente entre 3 y 8 semanas. Depende de tu punto de partida, velocidad de ejecucion y capacidad para implementar recomendaciones.",
+      "Desde las primeras semanas hay claridad. Los resultados en ventas dependen del nivel de ejecución, pero el cambio en enfoque, mensaje y dirección es inmediato.",
   },
   {
-    question: "Necesito tener una audiencia grande para empezar?",
+    question: "¿Necesito tener una audiencia grande para empezar?",
     answer:
-      "No. Priorizamos claridad de oferta, posicionamiento y conversion. Una audiencia pequena con mensaje correcto puede vender mejor que una grande sin foco.",
+      "No. No se trata de tener más audiencia, sino de tener mejor posicionamiento. Puedes vender con claridad, incluso con audiencias pequeñas.",
   },
   {
-    question: "Que incluye la sesion estrategica gratuita?",
+    question: "¿Esto es capacitación?",
     answer:
-      "Revisamos tu narrativa, oferta y embudo actual. Te llevas un diagnostico de cuellos de botella y tres acciones concretas para ejecutar de inmediato.",
+      "No. Es un sistema aplicado para generar resultados en ventas.",
   },
 ]
 
@@ -42,7 +42,7 @@ export function FaqSection() {
             Preguntas frecuentes
           </span>
           <h2 className="mt-4 font-display text-3xl font-bold text-foreground sm:text-4xl">
-            Resolvemos dudas antes de que decidas
+            Resolvemos dudas antes de que tomes una decisión
           </h2>
         </motion.div>
 

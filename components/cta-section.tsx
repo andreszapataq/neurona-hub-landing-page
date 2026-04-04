@@ -51,8 +51,8 @@ export function CtaSection() {
               className="font-display text-3xl font-bold text-foreground sm:text-4xl md:text-5xl"
             >
               <span className="text-balance">
-                Reserva una sesión estratégica y activa tu siguiente{" "}
-                <span className="text-primary">NeuronaHub</span>
+                Reserva una sesión estratégica y define cómo vas a{" "}
+                <span className="text-primary">vender mejor</span>
               </span>
             </motion.h2>
 
@@ -63,8 +63,7 @@ export function CtaSection() {
               viewport={viewportOnce}
               className="mx-auto mt-6 max-w-xl text-balance text-muted-foreground"
             >
-              En 30 minutos identificamos cuellos de botella en tu marca y te entregamos un plan
-              de acción priorizado para los siguientes 90 días.
+              En 30 minutos identificamos los bloqueos en tu posicionamiento y te llevas una ruta clara para los próximos 90 días.
             </motion.p>
 
             <motion.div
@@ -75,7 +74,7 @@ export function CtaSection() {
               className="mx-auto mt-6 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-primary"
             >
               <ShieldCheck className="h-4 w-4" />
-              Sin costo y sin compromiso comercial
+              Sin costo. Sin compromiso
             </motion.div>
 
             {/* CTA Buttons — hover & tap */}
@@ -97,7 +96,7 @@ export function CtaSection() {
                   className="h-12 bg-primary px-8 text-base text-primary-foreground shadow-[0_0_40px_hsl(var(--primary)/0.35)] hover:bg-primary/90"
                 >
                   <a href="https://calendar.app.google/Q6CEa9jN1BbW1iqG8" target="_blank" rel="noopener noreferrer">
-                    Agendar mi sesión ahora
+                    Agendar sesión estratégica
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>

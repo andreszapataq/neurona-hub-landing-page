@@ -122,21 +122,18 @@ export function BrandsSection() {
           className="text-center"
         >
           <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Nuestros Programas
+            Nuestro Enfoque
           </span>
           <h2 className="mt-4 font-display text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
             <span className="text-balance">
-              Elige la ruta que más acelera{" "}
-              <br className="hidden md:inline" />
+              Soluciones diseñadas para transformar la forma en que{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                tu siguiente nivel
+                personas y equipos que venden.
               </span>
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-balance text-muted-foreground md:text-lg">
-            Metodologías de vanguardia diseñadas para mentes que buscan
-            precisión estratégica, branding de alto impacto y un rendimiento
-            físico-mental optimizado.
+            Programas diseñados para desarrollar la forma en que piensas, comunicas y conviertes en ventas.
           </p>
         </motion.div>
 

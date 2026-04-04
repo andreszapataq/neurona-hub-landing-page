@@ -9,7 +9,7 @@ const footerLinks = {
     { label: "Neurona Academy", href: "#" },
     { label: "Neurona BrandLab", href: "#" },
     { label: "Neurona Learning", href: "#" },
-    { label: "Neurona Café", href: "#" },
+    { label: "Super Food", href: "#" },
   ],
   Navegación: [
     { label: "Sobre nosotros", href: "#about" },
@@ -59,11 +59,10 @@ export function Footer({ year }: { year: number }) {
               />
             </a>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Diseñamos sistemas para que profesionales y marcas escalen con claridad, autoridad y
-              conversiones sostenibles.
+              Desarrollamos la forma en que las personas y los equipos venden, posicionan y convierten.
             </p>
             <p className="mt-4 text-sm text-muted-foreground">
-              ceo@neuronahub.com
+              contacto@neuronahub.com
             </p>
             <p className="text-sm text-muted-foreground">Cali, Colombia</p>
           </motion.div>
