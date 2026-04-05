@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { DM_Sans, Sora } from 'next/font/google'
+import { Toaster } from 'sonner'
 import { MotionProvider } from '@/components/motion-provider'
 
 import './globals.css'
@@ -31,6 +32,16 @@ export default function RootLayout({
     <html lang="es" className={`${dmSans.variable} ${sora.variable}`}>
       <body className="font-sans antialiased">
         <MotionProvider>{children}</MotionProvider>
+        <Toaster
+          theme="dark"
+          position="top-center"
+          toastOptions={{
+            classNames: {
+              toast: 'bg-card text-foreground border-border shadow-lg',
+              description: 'text-muted-foreground',
+            },
+          }}
+        />
       </body>
     </html>
   )

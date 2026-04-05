@@ -6,7 +6,7 @@ import { Mail, Send, ShieldCheck, Lock, Zap, Loader2 } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { toast, Toaster } from "sonner"
+import { toast } from "sonner"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import {
@@ -48,32 +48,31 @@ export function NewsletterSection() {
   const { ref: hookFormRef, ...emailRegister } = register("email")
 
   async function onSubmit(data: NewsletterFormValues) {
-    // Future: replace with real API call
-    await new Promise((resolve) => setTimeout(resolve, 500))
-    console.log("Newsletter signup:", data.email)
+    try {
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbzHJlbpsn8aZiP3907eUXvmSbTv2vgzJNqgEV0qtAWAYZpHeGVq4na5W9K8gDYOTOk_sA/exec",
+        {
+          method: "POST",
+          body: JSON.stringify({ email: data.email }),
+          mode: "no-cors",
+        }
+      )
 
-    toast.success("¡Suscripción exitosa!", {
-      description: "Te enviaremos contenido de valor cada semana.",
-    })
+      toast.success("¡Suscripción exitosa!", {
+        description: "Te enviaremos contenido de valor cada semana.",
+      })
 
-    reset()
-    inputRef.current?.focus()
+      reset()
+      inputRef.current?.focus()
+    } catch {
+      toast.error("Hubo un error", {
+        description: "Inténtalo de nuevo más tarde.",
+      })
+    }
   }
 
   return (
     <section id="newsletter" className="relative py-32 px-6">
-      <Toaster
-        theme="dark"
-        position="top-center"
-        toastOptions={{
-          classNames: {
-            toast:
-              "group toast bg-card text-foreground border-border shadow-lg",
-            description: "text-muted-foreground",
-          },
-        }}
-      />
-
       {/* Background glows */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-32 top-1/2 h-[300px] w-[300px] -translate-y-1/2 rounded-full bg-accent/8 blur-[100px]" />
