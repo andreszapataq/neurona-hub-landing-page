@@ -6,6 +6,7 @@ import { BrandsSection } from "@/components/brands-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { AboutSection } from "@/components/about-section"
 import { FaqSection } from "@/components/faq-section"
+import { NewsletterSection } from "@/components/newsletter-section"
 import { CtaSection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 import { ScrollProgress } from "@/components/scroll-progress"
@@ -25,6 +26,7 @@ export default function Page() {
         <EcosystemSection />
         <AboutSection />
         <FaqSection />
+        <NewsletterSection />
         <CtaSection />
       </main>
       <Footer year={currentYear} />
