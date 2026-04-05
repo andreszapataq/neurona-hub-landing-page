@@ -62,7 +62,9 @@ export function Footer({ year }: { year: number }) {
               Desarrollamos la forma en que las personas y los equipos venden, posicionan y convierten.
             </p>
             <p className="mt-4 text-sm text-muted-foreground">
-              contacto@neuronahub.com
+              <a href="mailto:contacto@neuronahub.com" className="transition-colors hover:text-primary">
+                contacto@neuronahub.com
+              </a>
             </p>
             <p className="text-sm text-muted-foreground">Cali, Colombia</p>
           </motion.div>
@@ -98,16 +100,30 @@ export function Footer({ year }: { year: number }) {
           className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row"
         >
           <p className="text-sm text-muted-foreground">
-            {year} NeuronaHub. Todos los derechos reservados.
+            {year} NeuronaHub. Todos los derechos reservados. · Diseñado y desarrollado por{" "}
+            <a
+              href="https://www.andreszapata.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground transition-colors hover:text-primary"
+            >
+              <strong>Z^</strong>
+            </a>
           </p>
           <div className="flex items-center gap-6">
-            {["LinkedIn", "Instagram", "YouTube"].map((social) => (
+            {[
+              { label: "LinkedIn", href: "https://co.linkedin.com/in/jhonnyaponza" },
+              { label: "Instagram", href: "https://www.instagram.com/neuronahub" },
+              { label: "YouTube", href: "https://www.youtube.com/@jhonnyaponza" },
+            ].map((social) => (
               <a
-                key={social}
-                href="#"
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm text-muted-foreground transition-colors hover:text-primary"
               >
-                {social}
+                {social.label}
               </a>
             ))}
           </div>
