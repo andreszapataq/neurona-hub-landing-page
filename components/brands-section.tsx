@@ -86,7 +86,7 @@ const brands: Brand[] = [
     accentColor: "text-amber-300",
     accentRgb: "252,211,77",
     screenshot: "/images/brands/super-food.webp",
-    href: "#contact",
+    href: "https://www.impulsocoffee.com/",
     colSpan: 7,
     isNew: true,
   },
